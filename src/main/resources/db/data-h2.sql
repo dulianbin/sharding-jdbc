@@ -8,3 +8,8 @@ INSERT INTO user (test_id, tenant_id, name, age, test_type, test_date, role, pho
 (3, 2, '麻花藤', 1, 1, '2017-3-3 1:1:1', 1, '10000'),
 (4, 2, '东狗', 2, 1, '2017-3-3 1:1:1', 1, '10086'),
 (5, 1, '王五', 2, 1, '2017-3-3 1:1:1', 1, '10010');
+
+
+DELETE FROM t_order_0;
+DELETE FROM t_order_1;
+DELETE FROM t_order_2;

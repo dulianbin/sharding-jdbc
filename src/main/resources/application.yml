@@ -33,13 +33,13 @@ sharding:
           driverClassName: com.mysql.jdbc.Driver
           url: jdbc:mysql://localhost:3306/demo_ds_0
           username: root
-          password: 123456
+          password: dlb123456
         ds_1:
           type: org.apache.commons.dbcp.BasicDataSource
           driverClassName: com.mysql.jdbc.Driver
           url: jdbc:mysql://localhost:3306/demo_ds_1?useUnicode=true&characterEncoding=UTF-8
           username: root
-          password: 123456
+          password: dlb123456
       config:
         sharding:
           defaultDataSourceName: ds_1
@@ -56,11 +56,11 @@ sharding:
                   algorithmExpression: t_order_${user_id % 3}
               keyGeneratorColumnName: order_id
             t_order_item:
-              actualDataNodes: ds_${0..1}.t_order_item_${0..1}
+              actualDataNodes: ds_${0..1}.t_order_item_${0..2}
               tableStrategy:
                 inline:
                   shardingColumn: user_id
-                  algorithmExpression: t_order_item_${user_id % 2}
+                  algorithmExpression: t_order_item_${user_id % 3}
               keyGeneratorColumnName: order_item_id
 
 

@@ -42,3 +42,34 @@ CREATE TABLE `t_order_2` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=INNODB AUTO_INCREMENT=399 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+
+CREATE TABLE `t_order_item_0` (
+   `order_item_id` INT(32) NOT NULL AUTO_INCREMENT,
+   `order_id` INT(32) DEFAULT NULL,
+   `user_id` INT(11) DEFAULT NULL,
+   `price` DECIMAL(8,2) DEFAULT NULL,
+   `status` VARCHAR(10) COLLATE utf8_bin DEFAULT NULL,
+   `create_time` DATETIME DEFAULT NULL,
+   PRIMARY KEY (`order_item_id`)
+ ) ENGINE=INNODB AUTO_INCREMENT=400 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+ CREATE TABLE `t_order_item_1` (
+   `order_item_id` INT(32) NOT NULL AUTO_INCREMENT,
+   `order_id` INT(32) DEFAULT NULL,
+   `user_id` INT(11) DEFAULT NULL,
+   `price` DECIMAL(8,2) DEFAULT NULL,
+   `status` VARCHAR(10) COLLATE utf8_bin DEFAULT NULL,
+   `create_time` DATETIME DEFAULT NULL,
+   PRIMARY KEY (`order_item_id`)
+ ) ENGINE=INNODB AUTO_INCREMENT=400 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+  CREATE TABLE `t_order_item_2` (
+   `order_item_id` INT(32) NOT NULL AUTO_INCREMENT,
+   `order_id` INT(32) DEFAULT NULL,
+   `user_id` INT(11) DEFAULT NULL,
+   `price` DECIMAL(8,2) DEFAULT NULL,
+   `status` VARCHAR(10) COLLATE utf8_bin DEFAULT NULL,
+   `create_time` DATETIME DEFAULT NULL,
+   PRIMARY KEY (`order_item_id`)
+ ) ENGINE=INNODB AUTO_INCREMENT=400 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
