@@ -1,68 +1,47 @@
 #app
 server:
-    port: 8484
+    port: 8488
 
 #spring
 spring:
   devtools:
     restart:
       enabled: false
-
-  # H2 DATABASE CONFIG
-#  datasource:
-#    type: com.zaxxer.hikari.HikariDataSource
-#    schema: classpath:/db/schema-h2.sql
-#    data: classpath:/db/data-h2.sql
-#    url: jdbc:h2:mem:testdb
-#    username: sa
-#    password: sa
-#    platform: h2
-#    initialize: true
-#    continue-on-error: true
-#  h2:
-#    console:
-#      enabled: true
-#      path: /console
-#shardingjdbc
-sharding:
-  jdbc:
-      datasource:
-        names: ds_0,ds_1
-        ds_0:
-          type: org.apache.commons.dbcp.BasicDataSource
-          driverClassName: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/demo_ds_0
-          username: root
-          password: dlb123456
-        ds_1:
-          type: org.apache.commons.dbcp.BasicDataSource
-          driverClassName: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/demo_ds_1?useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: dlb123456
-      config:
-        sharding:
-          defaultDataSourceName: ds_1
-          default-database-strategy:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/yunji_svip_center_0
+        username: root
+        password: 123456
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/yunji_svip_center_1?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: 123456
+    sharding:
+      default-database-strategy:
+        inline:
+          sharding-column: user_id
+          algorithm-expression: ds${(user_id % 2)+0}
+      tables:
+        t_order:
+          actualDataNodes: ds${0..1}.t_order_${0..2}
+          tableStrategy:
             inline:
-              sharding-column: user_id
-              algorithm-expression: ds_${(user_id % 2)+0}
-          tables:
-            t_order:
-              actualDataNodes: ds_${0..1}.t_order_${0..2}
-              tableStrategy:
-                inline:
-                  shardingColumn: user_id
-                  algorithmExpression: t_order_${user_id % 3}
-              keyGeneratorColumnName: order_id
-            t_order_item:
-              actualDataNodes: ds_${0..1}.t_order_item_${0..2}
-              tableStrategy:
-                inline:
-                  shardingColumn: user_id
-                  algorithmExpression: t_order_item_${user_id % 3}
-              keyGeneratorColumnName: order_item_id
-
+              shardingColumn: user_id
+              algorithmExpression: t_order_${user_id % 3}
+          keyGeneratorColumnName: order_id
+        t_order_item:
+          actualDataNodes: ds${0..1}.t_order_item_${0..2}
+          tableStrategy:
+            inline:
+              shardingColumn: user_id
+              algorithmExpression: t_order_item_${user_id % 3}
+          keyGeneratorColumnName: order_item_id
 
 #mybatis
 mybatis-plus:
@@ -94,7 +73,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-#logging
-logging:
-  level: warn
+
+
+
 
