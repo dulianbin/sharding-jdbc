@@ -16,7 +16,40 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class ShardingJdbcApplication {
 
     protected final static Logger logger = LoggerFactory.getLogger(ShardingJdbcApplication.class);
-
+    private static final  String BANNER = ""+
+            "				  _oo0oo_\n" +
+            "                 o8888888o\n" +
+            "                 88\" . \"88\n" +
+            "                 (| -_- |)\n" +
+            "                 0\\  =  /0\n" +
+            "               ___/`---'\\___\n" +
+            "             .' \\\\|     |// '.\n" +
+            "            / \\\\|||  :  |||// \\\n" +
+            "           / _||||| -:- |||||- \\\n" +
+            "          |   | \\\\\\  -  /// |   |\n" +
+            "          | \\_|  ''\\---/''  |_/ |\n" +
+            "          \\  .-\\__  '-'  ___/-. /\n" +
+            "        ___'. .'  /--.--\\  `. .'___\n" +
+            "     .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" +
+            "    | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" +
+            "    \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" +
+            "=====`-.____`.___ \\_____/___.-`___.-'=====\n" +
+            "                  `=---='\n" +
+            "\n" +
+            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+            "\n" +
+            "          佛祖保佑         永无BUG\n" +
+            "\n" +
+            "     佛曰:\n" +
+            "         写字楼里写字间，写字间里程序员；\n" +
+            "         程序人员写程序，又拿程序换酒钱。\n" +
+            "         酒醒只在网上坐，酒醉还来网下眠；\n" +
+            "         酒醉酒醒日复日，网上网下年复年。\n" +
+            "         但愿老死电脑间，不愿鞠躬老板前；\n" +
+            "         奔驰宝马贵者趣，公交自行程序员。\n" +
+            "         别人笑我忒疯癫，我笑自己命太贱；\n" +
+            "         不见满街漂亮妹，哪个归得程序员？\n" +
+            "         ***好啦！别看了，启动成功！**** ";
     /**
      * <p>
      * 测试 RUN<br>
@@ -39,9 +72,8 @@ public class ShardingJdbcApplication {
         SpringApplication app = new SpringApplication(ShardingJdbcApplication.class);
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
-//		SpringApplication.run(Application.class, args);
-        logger.info("PortalApplication is success!");
-        System.err.println("sample started. http://localhost:8080/user/test");
+        //logger.info("application is success!");
+        System.out.println(BANNER);
     }
 
 }

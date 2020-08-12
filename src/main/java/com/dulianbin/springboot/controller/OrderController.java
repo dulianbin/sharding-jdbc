@@ -34,7 +34,7 @@ public class OrderController {
 
     @GetMapping("save")
     public Object save(){
-        for(int i=800;i<1000;i++){
+        for(int i=1000;i<1200;i++){
             Order order=new Order();
             order.setOrderId(Long.parseLong(i+""));
             order.setUserId(i);

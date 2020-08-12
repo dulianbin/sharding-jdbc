@@ -1,48 +1,9 @@
+spring:
+  profiles:
+    active: ${config_env:local} #环境变量
 #app
 server:
     port: 8488
-
-#spring
-spring:
-  devtools:
-    restart:
-      enabled: false
-  shardingsphere:
-    datasource:
-      names: ds0,ds1
-      ds0:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/yunji_svip_center_0
-        username: root
-        password: 123456
-      ds1:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/yunji_svip_center_1?useUnicode=true&characterEncoding=UTF-8
-        username: root
-        password: 123456
-    sharding:
-      default-database-strategy:
-        inline:
-          sharding-column: user_id
-          algorithm-expression: ds${(user_id % 2)+0}
-      tables:
-        t_order:
-          actualDataNodes: ds${0..1}.t_order_${0..2}
-          tableStrategy:
-            inline:
-              shardingColumn: user_id
-              algorithmExpression: t_order_${user_id % 3}
-          keyGeneratorColumnName: order_id
-        t_order_item:
-          actualDataNodes: ds${0..1}.t_order_item_${0..2}
-          tableStrategy:
-            inline:
-              shardingColumn: user_id
-              algorithmExpression: t_order_item_${user_id % 3}
-          keyGeneratorColumnName: order_item_id
-
 #mybatis
 mybatis-plus:
   datasource: dataSource
