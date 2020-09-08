@@ -9,13 +9,13 @@ spring:
       ds0:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/yunji_svip_center_0
+        url: jdbc:mysql://localhost:3306/svip_center_0
         username: root
         password: 123456
       ds1:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/yunji_svip_center_1?useUnicode=true&characterEncoding=UTF-8
+        url: jdbc:mysql://localhost:3306/svip_center_1?useUnicode=true&characterEncoding=UTF-8
         username: root
         password: 123456
     sharding:
